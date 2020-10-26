@@ -145,7 +145,7 @@ email in fitting places within your application.
 defmodule MyApp.SomeControllerPerhaps do
   def send_welcome_email do
     Email.welcome_email()   # Create your email
-    |> Mailer.deliver_now() # Send your email
+    |> Mailer.deliver_now!() # Send your email
   end
 end
 ```
@@ -200,7 +200,7 @@ process completion (e.g. a web request in Phoenix). Bamboo provides a
 also provides a [`Bamboo.DeliverLaterStrategy`] behaviour that you can
 implement to tailor your background email sending.
 
-By default, `deliver_later`uses [`Bamboo.TaskSupervisorStrategy`]. This
+By default, `deliver_later` uses [`Bamboo.TaskSupervisorStrategy`]. This
 strategy sends the email right away, but does so in the background without
 linking to the calling process, so errors in the mailer won't bring down your
 app.
